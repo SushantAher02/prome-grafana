@@ -1,0 +1,22 @@
+wget -q -O gpg.key https://rpm.grafana.com/gpg.key
+sudo rpm --import gpg.key
+
+nano /etc/yum.repos.d/grafana.repo
+
+[grafana]
+name=grafana
+baseurl=https://rpm.grafana.com
+repo_gpgcheck=1
+enabled=1
+gpgcheck=1
+gpgkey=https://rpm.grafana.com/gpg.key
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+
+sudo dnf install grafana
+
+
+Grafana installation
+sudo yum install -y https://dl.grafana.com/oss/release/grafana-10.0.3-1.x86_64.rpm
+sudo service grafana-server start
+sudo service grafana-server status
